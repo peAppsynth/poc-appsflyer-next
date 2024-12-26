@@ -1,6 +1,6 @@
 // import Image from "next/image";
+"use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Script from "next/script";
 
 declare global {
@@ -57,7 +57,7 @@ export default function Home() {
             afSub2: afSub2,
           },
         });
-
+        console.log("Generated OneLink URL:", result); // Log the generated URL
         setOneLinkURL(result); // Save the generated URL to state
       }
     };
@@ -82,7 +82,8 @@ export default function Home() {
       
       <h1>Welcome to My Next.js Website</h1>
       <p>Next.js makes building web applications easy!</p>
-      {oneLinkURL ? (
+      {
+      oneLinkURL ? (
         <a
           href={oneLinkURL}
           target="_blank"
