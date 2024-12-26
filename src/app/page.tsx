@@ -29,7 +29,7 @@ export default function Home() {
       console.log("Initializing Smart Script...");
       if (window.AF_SMART_SCRIPT) {
         try {
-          const oneLinkURL = "https://scbamfundclick-uat.onelink.me/kCUh";
+          const oneLinkURL = "https://pocwebtoapp.onelink.me/gQ1s";
           const webReferrer = "af_sub3";
           const mediaSource = { keys: ["utm_source"], defaultValue: "none" };
           const googleClickIdKey = "af_sub1";
