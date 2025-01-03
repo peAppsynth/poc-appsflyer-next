@@ -14,7 +14,8 @@ declare global {
           afCustom: { paramKey: string; keys: string[]; defaultValue?: string }[];
           channel: { keys: string[] };
           afSub2: { keys: string[] };
-        };
+          campaign: { keys: string[] };
+        }
       }) => { clickURL: string }; // Assuming the response includes a `clickURL` property
     };
   }
@@ -42,10 +43,11 @@ export default function Home() {
           const af_dp = {
             paramKey: "af_dp",
             keys: ["fallback_url"],
-            defaultValue: "scbamfundclick%3A%2F%2Fapp%3Fpage%3DfundInfo%26fundCode%3DSCBS%2526P500",
+            defaultValue: "https://www.google.com",
           };
           const afSub2 = { keys: ["fbclid"] };
           const custom_ss_ui = { paramKey: "af_ss_ui", keys: ["af_ss_ui"], defaultValue: "true" };
+          const campaign = { keys:["utm_campaign"] };
 
           // Call the generateOneLinkURL function
           const result = window.AF_SMART_SCRIPT.generateOneLinkURL({
@@ -57,6 +59,7 @@ export default function Home() {
               afCustom: [utm_medium, af_dp, custom_ss_ui],
               channel: channel,
               afSub2: afSub2,
+              campaign: campaign,
             },
           });
 
