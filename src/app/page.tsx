@@ -15,7 +15,11 @@ declare global {
           channel: { keys: string[] };
           afSub2: { keys: string[] };
           campaign: { keys: string[] };
-          is_retargeting: { keys: string; defaultValue: boolean };
+          isRetargeting: { 
+            paramKey: string;
+            keys: string[];
+            defaultValue: string 
+          };
         }
       }) => { clickURL: string }; // Assuming the response includes a `clickURL` property
     };
@@ -49,7 +53,7 @@ export default function Home() {
           const afSub2 = { keys: ["fbclid"] };
           const custom_ss_ui = { paramKey: "af_ss_ui", keys: ["af_ss_ui"], defaultValue: "true" };
           const campaign = { keys:["utm_campaign"] };
-          const is_retargeting = { keys: "is_retargeting", defaultValue: true };
+          const is_retargeting = {paramKey:"is_retargeting",keys:["isRetargeting"],defaultValue:"false"};
           // Call the generateOneLinkURL function
           const result = window.AF_SMART_SCRIPT.generateOneLinkURL({
             oneLinkURL: oneLinkURL,
@@ -61,7 +65,7 @@ export default function Home() {
               channel: channel,
               afSub2: afSub2,
               campaign: campaign,
-              is_retargeting: is_retargeting,
+              isRetargeting: is_retargeting,
             },
           });
 
