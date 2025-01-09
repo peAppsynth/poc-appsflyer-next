@@ -50,7 +50,7 @@ export default function Home() {
           const afSub2 = { keys: ["fbclid"] };
           const custom_ss_ui = { paramKey: "af_ss_ui", keys: ["af_ss_ui"], defaultValue: "true" };
           const campaign = { keys:["utm_campaign"] };
-          const is_retargeting = { paramKey:"is_retargeting",keys:["isRetargeting"],defaultValue:"false" };
+          const is_retargeting = { paramKey:"is_retargeting",keys:["isRetargeting"], defaultValue:"false" };
           const af_siteid = { paramKey: "af_siteid", keys: ["af_siteid"], defaultValue: currentURL };
           
           // Call the generateOneLinkURL function
@@ -92,7 +92,7 @@ export default function Home() {
     if (isScriptLoaded) {
       initializeSmartScript();
     }
-  }, [isScriptLoaded]);
+  }, [isScriptLoaded, currentURL]);
 
   return (
     <main>
@@ -115,12 +115,7 @@ export default function Home() {
       </div>
 
       {oneLinkURL ? (
-        <a
-          href={oneLinkURL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
+        <a href={oneLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
           Go to Download Page
         </a>
       ) : (
