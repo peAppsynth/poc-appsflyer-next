@@ -22,6 +22,7 @@ declare global {
 }
 
 export default function Home() {
+  const [currentURL, setCurrentURL] = useState("");
   const [oneLinkURL, setOneLinkURL] = useState("");
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
@@ -30,9 +31,7 @@ export default function Home() {
       console.log("Initializing Smart Script...");
       if (window.AF_SMART_SCRIPT) {
         try {
-          const currentURL = window.location.href;
-          console.log("Current URL:", currentURL);
-
+          setCurrentURL(window.location.href);
           const oneLinkURL = "https://pocwebtoapp.onelink.me/gQ1s";
           const webReferrer = "af_sub3";
           const mediaSource = { keys: ["utm_source"], defaultValue: "none" };
@@ -110,6 +109,7 @@ export default function Home() {
       <div className="mt-4">
         <p>Script Loaded: {isScriptLoaded ? "Yes" : "No"}</p>
         <p>OneLink URL: {oneLinkURL || "Not generated yet"}</p>
+        <p>Current URL: {currentURL}</p>
       </div>
 
       {oneLinkURL ? (
